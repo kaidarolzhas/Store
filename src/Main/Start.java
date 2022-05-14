@@ -13,7 +13,7 @@ public class Start {
     public static MainFrame frame;
     public static void connect(Packagedata pd){
         try{
-            Socket socket = new Socket("127.0.0.1", 5999);
+            Socket socket = new Socket("127.0.0.1", 6555);
             ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
 
@@ -33,7 +33,7 @@ public class Start {
                 ArrayList<Ticket> arrayListFromServer = infoFromServer.getTickets();
                 String s = "";
                 for(int i=0; i< arrayListFromServer.size(); i++){
-                    s += arrayListFromServer.get(i).toString()+ "\n";
+                    s += arrayListFromServer.get(i).info()+ "\n";
                 }
                 DeleteTicket.textArea.setText(s);
                 AdminMenu.textArea.setText(s);
@@ -45,7 +45,7 @@ public class Start {
                 ArrayList<Ticket> arrayListFromServer = infoFromServer.getTickets();
                 String s = "";
                 for(int i=0; i< arrayListFromServer.size(); i++){
-                    s += arrayListFromServer.get(i).toString()+ "\n";
+                    s += arrayListFromServer.get(i).info()+ "\n";
                 }
                Find.textArea.setText(s);
             }

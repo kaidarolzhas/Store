@@ -2,7 +2,7 @@ package Class;
 
 import java.io.Serializable;
 
-public class Ticket implements Serializable {
+public class Ticket implements Serializable, Info {
     private Integer id;
     private String name;
     private String type;
@@ -97,19 +97,7 @@ public class Ticket implements Serializable {
     }
 
 
-    @Override
-    public String toString() {
-        return
-                 id + ") " + "Name: " +
-                 name +
-                " " + "Time: " +
-                 time + " Price: " +
-                 price + '\n' +
-                "Day:  " + day + " Month: " +
-                 month +
-                " Place: " + place;
 
-    }
 
     public int getAge() {
         return age;
@@ -117,5 +105,17 @@ public class Ticket implements Serializable {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String info() {
+        return id + ") " + "Name: " +
+                name +
+                " " + "Time: " +
+                time + " Price: " +
+                price + '\n' +
+                "Day:  " + day + " Month: " +
+                month +
+                " Place: " + place + " " + age+"+";
     }
 }

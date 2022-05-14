@@ -50,13 +50,19 @@ public class BuyTicket extends Container {
         BuyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 textArea.setText(null);
                 Packagedata pd = new Packagedata("GET TICKET", Integer.parseInt(numberField.getText()));
                 Start.connect(pd);
-                Packagedata pd1 = new Packagedata("ADD CARD",BuyTicket.ticket, MainMenu.user.getId());
-                Start.connect(pd1);
-                Packagedata pd2 = new Packagedata("Delete ticket",Integer.parseInt(numberField.getText()));
-                Start.connect(pd2);
+                if(MainMenu.user.getAge()>=ticket.getAge()) {
+                    Packagedata pd1 = new Packagedata("ADD CARD", BuyTicket.ticket, MainMenu.user.getId());
+                    Start.connect(pd1);
+                    Packagedata pd2 = new Packagedata("Delete ticket", Integer.parseInt(numberField.getText()));
+                    Start.connect(pd2);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "You can't buy , this film has a rating of 18+");
+                }
             }
         });
 
